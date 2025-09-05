@@ -16,7 +16,7 @@ Cada aula contém um resumo em **Markdown** com os principais pontos estudados.
 ---
 
 ## 📝 Resumos Gerais
-- [FPGA e Verilog - Resumo Aulas 01 a 05.md](./resumo-aulas-01-05.md)
+- [Resumo Aulas 01 a 05.md](./resumo-aulas-01-05.md)
 
 ---
 

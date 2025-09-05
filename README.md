@@ -15,4 +15,9 @@ Cada aula contém um resumo em **Markdown** com os principais pontos estudados.
 
 ---
 
-✍️ **Observação:** conforme avanço no curso, vou adicionando as próximas aulas aqui.
+## 📝 Resumos Gerais
+- [Resumo das Aulas 01 a 05](./resumo-aulas-01-05.md)
+
+---
+
+✍️ **Observação:** conforme avanço no curso, vou adicionando as próximas aulas e resumos aqui.

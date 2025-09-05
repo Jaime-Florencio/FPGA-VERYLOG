@@ -17,7 +17,7 @@ Cada aula contém um resumo em **Markdown** com os principais pontos estudados.
 ---
 
 ## 📝 Resumos Gerais
-- [Resumo Aulas 01 a 05.md](https://github.com/Jaime-Florencio/FPGA-e-VERYLOG/blob/main/Resumo%20Aulas%2001%20a%2005.md).
+- [Resumo Aulas 01 a 05](https://github.com/Jaime-Florencio/FPGA-e-VERYLOG/blob/main/Resumo%20Aulas%2001%20a%2005.md).
 
 ---
 

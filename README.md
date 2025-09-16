@@ -12,6 +12,8 @@ Cada aula contém um resumo em **Markdown** com os principais pontos estudados.
 3. [Aula 03 – Full-Custom IC](./FPGA%20e%20Verilog%20-%20Aula%2003%20-%20Full-Custom%20IC.md)
 4. [Aula 04 – ASIC (Application Specific Integrated Circuits)](./FPGA%20e%20Verilog%20-%20Aula%2004%20-%20ASIC.md)
 5. [Aula 05 – PLD (Programmable Logic Devices)](./FPGA%20e%20Verilog%20-%20Aula%2005%20-%20Programmable%20Logic%20Devices.md)
+6. [Aula 06 – SPLD (Simple Programmable Logic Devices)](./FPGA%20e%20Verilog%20-%20Aula%2006%20-%20SPLD.md)
+
 
 
 ---

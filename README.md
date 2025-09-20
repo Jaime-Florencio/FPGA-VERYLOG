@@ -14,7 +14,7 @@ Cada aula contém um resumo em **Markdown** com os principais pontos estudados.
 5. [Aula 05 – PLD (Programmable Logic Devices)](./Aulas/FPGA%20e%20Verilog%20-%20Aula%2005%20-%20Programmable%20Logic%20Devices.md)  
 6. [Aula 06 – SPLD (Simple Programmable Logic Devices)](./Aulas/FPGA%20e%20Verilog%20-%20Aula%2006%20-%20SPLD.md)  
 7. [Aula 07 – CPLD (Complex Programmable Logic Devices)](./Aulas/FPGA%20e%20Verilog%20-%20Aula%2007%20-%20CPLD.md)  
-8. [Aula 08 – FPGA](./Aulas/FPGA%20e%20Verilog%20-%20Aula%2008%20-%20FPGA.md)  
+8. [Aula 08 – FPGA (Field-Programmable Gate Array)](./Aulas/FPGA%20e%20Verilog%20-%20Aula%2008%20-%20FPGA.md)  
 
 ---
 

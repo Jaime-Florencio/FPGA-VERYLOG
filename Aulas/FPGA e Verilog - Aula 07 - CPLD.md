@@ -10,7 +10,7 @@
 Com a evolução da tecnologia, percebeu-se que os **SPLDs (Simple PLDs)** não supriam mais a demanda de circuitos digitais cada vez mais complexos.  
 A solução foi **combinar vários SPLDs em um único chip**, surgindo assim os **CPLDs (Complex Programmable Logic Devices)**.  
 
-![Placa CPLD Altera MAX7000](./Aulas/imagens/cpld-placa.png)  
+![Placa CPLD Altera MAX7000](./imagens/cpld-placa.png)  
 
 Em média, um CPLD possui de **2 a 64 estruturas equivalentes a SPLDs**, interligadas por uma matriz de interconexão.  
 

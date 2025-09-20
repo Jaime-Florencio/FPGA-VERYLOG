@@ -79,4 +79,14 @@ Nesta aula utilizei os seguintes arquivos de instalação (mantidos localmente, 
 - [Quartus Prime Lite Edition – Downloads](https://www.intel.com/content/www/us/en/software/programmable/quartus-prime/download.html)  
 - [ModelSim-Intel FPGA Starter Edition](https://www.intel.com/content/www/us/en/software/programmable/quartus-prime/model-sim.html)  
 
+---
+
+## 🔧 Observação sobre o Patch
+Após a instalação, foi aplicado o **Update 4** através do arquivo:
+
+- `QuartusPatchSetup-13.1.4.182.exe`  
+
+Isso gerou a pasta **Quartus II v13.1 update 4** no computador, que contém os arquivos do Quartus já corrigidos e atualizados.
+
+
 

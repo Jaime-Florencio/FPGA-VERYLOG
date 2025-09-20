@@ -1,4 +1,4 @@
-# FPGA e Verilog – Aula 08  
+# FPGA e Verilog – Aula 08 
 ## Arranjo de Portas Programáveis em Campo (FPGA)
 
 📅 Data: 20/09/2025  

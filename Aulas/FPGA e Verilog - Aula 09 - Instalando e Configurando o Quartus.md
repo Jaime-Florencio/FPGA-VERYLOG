@@ -1,3 +1,16 @@
+# 📚 FPGA e Verilog – Aula 09  
+## Instalando e Configurando o Quartus  
+
+**📅 Data:** 20/09/2025  
+**📚 Tema:** Ambiente de Desenvolvimento FPGA – Quartus Prime Lite  
+
+---
+
+### 📖 Resumo da Aula
+Nesta aula, foi apresentado o processo de instalação e configuração do **Intel Quartus Prime Lite** e do **programador USB Blaster**, preparando todo o ambiente de desenvolvimento para iniciar os projetos em FPGA.  
+
+---
+
 # Seu Primeiro Ambiente de Desenvolvimento FPGA: Um Guia Amigável Passo a Passo
 
 ## Introdução: Bem-vindo ao Mundo dos FPGAs!

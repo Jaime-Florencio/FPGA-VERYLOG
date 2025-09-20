@@ -62,3 +62,21 @@ Agora você já tem o **Quartus II + ModelSim** funcionando no seu PC:
 
 👉 O próximo passo é criar o **primeiro projeto em Verilog** (exemplo: porta lógica AND) e rodar a simulação para validar a instalação. 🚀
 
+---
+
+## 📂 Arquivos e Links Utilizados
+
+Nesta aula utilizei os seguintes arquivos de instalação (mantidos localmente, não incluídos no repositório devido ao tamanho):
+
+- `QuartusSetupWeb-13.1.0.162.exe` → Instalador principal do Quartus II 13.1 Web Edition  
+- `QuartusPatchSetup-13.1.4.182.exe` → Patch para Update 4  
+- `ModelSimSetup-13.1.0.162.exe` → Instalador do ModelSim-Altera Starter Edition  
+- `cyclone-13.1.0.162.qdz` → Arquivo de suporte para dispositivos Cyclone  
+- `DE0_Default.qsf` → Projeto de exemplo  
+
+📌 Para quem deseja baixar os instaladores oficiais e atuais, seguem os links diretos da Intel:
+
+- [Quartus Prime Lite Edition – Downloads](https://www.intel.com/content/www/us/en/software/programmable/quartus-prime/download.html)  
+- [ModelSim-Intel FPGA Starter Edition](https://www.intel.com/content/www/us/en/software/programmable/quartus-prime/model-sim.html)  
+
+

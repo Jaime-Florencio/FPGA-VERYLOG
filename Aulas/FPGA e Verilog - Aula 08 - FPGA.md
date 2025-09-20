@@ -13,7 +13,7 @@ São dispositivos lógico-programáveis mais avançados, com muito mais recursos
 ---
 
 ## Estrutura Geral do FPGA
-![Estrutura geral de um FPGA](./Aulas/Imagens/fpga-estrutura-geral.png)
+![Estrutura geral de um FPGA](./Imagens/fpga-estrutura-geral.png)
 
 Um FPGA é composto por:  
 - **Logic Blocks (LAB/LE):** agrupamento de elementos lógicos.  
@@ -62,7 +62,7 @@ Tabela-verdade:
 | 1 | 1 | 1 |
 
 Implementação com LUT:  
-![Exemplo de LUT](./Aulas/Imagens/fpga-lut.png)
+![Exemplo de LUT](./Imagens/fpga-lut.png)
 
 Cada combinação de entrada (x,y) corresponde a um endereço na memória.  
 A saída da LUT é o valor da função **F**.
@@ -75,7 +75,7 @@ O **Logic Element (LE)** combina:
 - **Flip-Flop (FF):** permite armazenar estado, criando lógica **sequencial**.  
 - Controle via memória **SRAM** para configurar o comportamento.  
 
-![Elemento Lógico: LUT + FF](./Aulas/Imagens/fpga-le.png)
+![Elemento Lógico: LUT + FF](./Imagens/fpga-le.png)
 
 📌 Diferença importante:  
 - **LUT sozinho → lógica combinacional (depende só das entradas).**  

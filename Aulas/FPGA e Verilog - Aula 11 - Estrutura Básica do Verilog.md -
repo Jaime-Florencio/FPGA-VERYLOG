@@ -1,0 +1,78 @@
+# 📚 FPGA e Verilog – Aula 11  
+## Estrutura Básica do Verilog  
+
+**📅 Data:** 27/09/2025  
+**📚 Tema:** Linguagem de Descrição de Hardware (HDL)  
+
+---
+
+### 📖 Resumo da Aula
+Nesta aula, entendemos o que é uma **linguagem de descrição de hardware (HDL)**, suas vantagens, desvantagens e como ela se diferencia das linguagens de programação tradicionais.  
+O foco será no **Verilog**, por ser mais simples e com sintaxe semelhante à linguagem C.  
+
+---
+
+### 🔎 Linguagens de Descrição de Hardware (HDL)
+HDL (*Hardware Description Language*) → **linguagem usada para descrever circuitos digitais**.  
+
+Principais linguagens:  
+- **AHDL**  
+- **VHDL**  
+- **Verilog** (a que usaremos na disciplina)  
+- **SystemC**
+
+👉 Todas têm o mesmo propósito: **descrever hardware de forma abstrata**.
+
+---
+
+### ✅ Vantagens do uso de HDL
+- **Independência da tecnologia**: projetos podem ser implementados em CPLD ou FPGA.  
+- **Portabilidade**: desde que se use bibliotecas padrão, o projeto pode ser reutilizado em diferentes tecnologias.  
+- **Facilidade de atualização**: mais simples alterar e manter projetos.  
+- **Níveis de abstração**: permite escrever desde portas lógicas até descrições comportamentais (ex.: `if`, `else` como em C).  
+- **Redução do tempo de projeto, testes e implementação.**  
+- **Documentação integrada**: comentários no código servem como documentação.  
+
+---
+
+### ⚠️ Desvantagens
+- O hardware gerado pode ser **menos otimizado** do que projetar diretamente com portas lógicas.  
+
+---
+
+### 🆚 Linguagem de Programação vs HDL
+São conceitos **completamente diferentes**:
+
+- **Linguagem de Programação**  
+  - Código → compilador → assembly → montador → código de máquina → execução na CPU.  
+  - Resultado final: **um programa que roda em hardware existente** (ex.: CPU).  
+
+- **HDL (ex.: Verilog)**  
+  - Código Verilog → sintetizador → mapeamento em bibliotecas → geração de circuito lógico.  
+  - Resultado final: **hardware novo** (um circuito descrito e gerado na FPGA/CPLD).  
+
+👉 Nunca dizemos que estamos *“programando em Verilog”*, e sim que estamos **descrevendo hardware em Verilog**.
+
+---
+
+### 🔄 Fluxo de Projeto em HDL
+1. **Especificação do circuito**  
+   - Equações lógicas, representação comportamental, portas etc.  
+2. **Descrição em HDL**  
+   - Ex.: Verilog, VHDL.  
+3. **Simulação comportamental** (opcional, mas altamente recomendada)  
+   - Testa a lógica sem considerar atrasos.  
+4. **Síntese, posicionamento e roteamento (Place & Route)**  
+   - Tradução do código em hardware real dentro da FPGA.  
+5. **Simulação temporal** (opcional)  
+   - Considera os atrasos da implementação física.  
+6. **Implementação na FPGA**  
+   - Geração do circuito lógico final.  
+
+---
+
+### 🏁 Conclusão
+- O **produto final de um projeto HDL é hardware** (circuito lógico).  
+- O **produto final de um projeto em linguagem de programação é software** (um programa que roda em hardware existente).  
+
+👉 O Verilog será nossa ferramenta principal, pois é simples, portável e muito utilizado no mercado.

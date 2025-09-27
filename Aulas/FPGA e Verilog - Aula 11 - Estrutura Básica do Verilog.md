@@ -35,8 +35,29 @@ Principais linguagens:
 
 ---
 
-### ⚠️ Desvantagens
-- O hardware gerado pode ser **menos otimizado** do que projetar diretamente com portas lógicas.  
+### ⚠️ Desvantagens do uso de HDL
+
+- **Menor otimização manual**:  
+  O circuito gerado pelo sintetizador pode não ser tão otimizado quanto um projeto feito manualmente em nível de portas lógicas, principalmente em termos de área ocupada no chip, consumo de energia e desempenho.
+
+- **Dependência de ferramentas de síntese**:  
+  A qualidade final do hardware depende fortemente do sintetizador e da tecnologia utilizada (CPLD, FPGA, ASIC). Projetos diferentes podem gerar resultados diferentes dependendo do software e da biblioteca de células usada.
+
+- **Curva de aprendizado**:  
+  Exige que o projetista aprenda não só a linguagem (ex.: Verilog ou VHDL), mas também todo o fluxo de projeto (simulação, síntese, place & route, timing analysis).
+
+- **Abstração pode esconder detalhes**:  
+  Ao descrever em um nível alto (ex.: com `if`, `case`, `for`), detalhes de temporização e uso de recursos podem ficar ocultos, dificultando ajustes finos de desempenho.
+
+- **Portabilidade limitada quando se usam recursos específicos**:  
+  Embora HDL seja portável, usar bibliotecas ou *IP Cores* específicos de um fabricante pode restringir o projeto a uma tecnologia (ex.: apenas FPGAs da Intel ou da Xilinx).
+
+- **Custo de ferramentas avançadas**:  
+  Embora existam versões gratuitas (Quartus Lite, Vivado WebPack), ferramentas completas de simulação, análise temporal e síntese avançada podem ser caras.
+
+- **Depuração mais complexa**:  
+  Erros em HDL não aparecem como em software (prints, debug passo a passo). Muitas vezes só se revelam em simulação ou, pior, na FPGA real.
+
 
 ---
 

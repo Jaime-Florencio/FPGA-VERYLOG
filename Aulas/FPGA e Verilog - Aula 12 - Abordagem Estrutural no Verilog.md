@@ -80,9 +80,9 @@ output cout;        // 1 bit
 Permitem definir constantes reutilizáveis dentro do módulo.
 
 ```verilog
-parameter largura = 4;
 
 module adder (a, b, cin, s, cout);
+    parameter largura = 4;
     input [largura-1:0] a, b;
     input cin;
     output [largura-1:0] s;

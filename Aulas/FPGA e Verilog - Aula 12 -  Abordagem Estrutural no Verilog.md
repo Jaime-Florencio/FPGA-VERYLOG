@@ -104,13 +104,9 @@ Nesta aula iniciamos o projeto:
 Tarefa: **Descrever o Somador Completo (Full Adder) em Verilog** usando **abordagem estrutural** (portas).
 
 **Imagem do diagrama:**  
-Coloque a figura em `Aulas/Imagens/primeiroprojetoverilog.png` e referencie assim:
 
-```markdown
-![Diagrama – Full Adder](./Imagens/primeiroprojetoverilog.png)
-```
 
-> Lembre-se: o caminho acima é relativo ao arquivo da **Aula 12** dentro da pasta `Aulas/`.
+![Diagrama – Full Adder](../Imagens/primeiroprojetoverilog.png)
 
 ---
 

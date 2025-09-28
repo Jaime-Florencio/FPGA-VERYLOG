@@ -106,7 +106,7 @@ Tarefa: **Descrever o Somador Completo (Full Adder) em Verilog** usando **aborda
 **Imagem do diagrama:**  
 
 
-![Diagrama – Full Adder](../Imagens/primeiroprojetoverilog.png)
+![Diagrama – Full Adder](Imagens/primeiroprojetoverilog.png)
 
 ---
 

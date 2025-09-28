@@ -1,4 +1,4 @@
-# 📚 FPGA e Verilog – Aula 11  
+# 📚 FPGA e Verilog – Aula 10  
 ## Estrutura Básica do Verilog  
 
 **📅 Data:** 27/09/2025  

@@ -143,129 +143,123 @@ endmodule
 - [ ] Simulação com períodos `a=400 ps`, `b=200 ps`, `cin=100 ps`.  
 - [ ] Formas de onda de `s` e `cout` compatíveis com a lógica esperada.
 
-# FPGA e Verilog - Aula 13 - Programando a FPGA (Altera Cyclone IV)**
+## 8) Colocando o Projeto 01 na **FPGA** (Aula 13)
 
-> **Objetivo:** configurar pinos no Quartus, compilar o projeto e programar a FPGA via **USB‑Blaster** usando **JTAG**. Exemplo prático com o **Projeto 01 (Somador Completo)**: entradas em chaves, saídas em LEDs.
+> Agora vamos **mapear os pinos**, **compilar** novamente e **programar** a placa via **USB-Blaster/JTAG** para testar `a`, `b`, `cin` nas chaves e observar `s`, `cout` nos LEDs.
 
----
+### 8.1 Mapeamento de pinos (SW/LED ↔ FPGA)
 
-## 1) Por que **USB‑Blaster**? O que é **JTAG**?
+1. **Descubra os pinos físicos** da sua placa (planilha `.xls`/manual do kit).  
+   *Exemplo ilustrativo:*  
+   `![Planilha de pinos](../Aulas/Imagens/1aula13.png)`
 
-- **USB‑Blaster** é a interface da Intel/Altera que converte **USB ↔ JTAG**.  
-  - **JTAG** (Joint Test Action Group) é um protocolo padrão para **programação** e **teste** em chips. Na placa, o USB‑Blaster envia/recebe os sinais **TCK, TMS, TDI, TDO** até a FPGA.
-- Com ele você pode:
-  - **Carregar** um arquivo **`.sof`** diretamente na **SRAM** da FPGA (volátil — perde ao desligar).
-  - (Opcional) **Gravar** memória de configuração externa (ex.: EPCS/AS) usando **`.pof`** no modo **Active Serial** — persiste após desligar.
-- **Resumo da conexão**: **PC (USB)** ⇄ **USB‑Blaster** ⇄ **JTAG 10 pinos** da **placa FPGA**.
+2. No **Quartus**: `Assignments > Pin Planner`.  
+   - Localize as portas do **top-level** (`a`, `b`, `cin`, `s`, `cout`).  
+   - Preencha **Location** com os **pinos físicos** correspondentes (ex.: `PIN_AB12`).  
+   - Defina **I/O Standard** apropriado (geralmente `3.3-V LVTTL` em kits de Cyclone IV).  
+   `![Pin Planner](../Aulas/Imagens/2aula13.png)`  
+   `![Atribuições](../Aulas/Imagens/3aula13.png)`
 
-> ⚠️ **Importante:** além do cabo JTAG, **alimente a placa** (USB de alimentação ou fonte DC, conforme o hardware). Sem alimentação, a programação falha.
+**Mapa desejado (exemplo da aula):**
+- **Chave 1** → `a`  
+- **Chave 2** → `b`  
+- **Chave 3** → `cin`  
+- **LED D12** → `s`  
+- **LED D6** → `cout`
 
----
+> ⚠️ **Atenção (ativo-baixo):** muitos LEDs de kits são **ativo-baixo** (acendem com `0`). Se notar inversão, você pode:  
+> a) manter como está (sabendo que `0` acende), ou  
+> b) inverter no HDL, ex.: `assign led_s = ~s;` (ajuste o nome do pino/porta).
 
-## 2) Montagem física e “primeiro boot”
-
-1. **Alimentar** a placa (ver chave liga/desliga).  
-2. **Conectar** o cabo **USB‑Blaster** ao conector **JTAG** (atenção ao pino 1).  
-3. Alguns kits acendem **displays/LEDs** ao ligar — comportamento **depende** da lógica do kit (muitos LEDs são **ativo‑baixo**).
-
----
-
-## 3) Preparando o **Projeto 01 (Somador Completo)** na placa
-
-### 3.1 Mapeamento desejado (exemplo da aula)
-
-- **Entradas (chaves):**
-  - **Chave 1** → `a`
-  - **Chave 2** → `b`
-  - **Chave 3** → `cin`
-- **Saídas (LEDs):**
-  - **LED D6**  → `cout`
-  - **LED D12** → `s`
-
-> 🔎 **Atenção:** a serigrafia **D6**, **D12**, “Chave 1”, etc., **varia por placa**. Consulte a **documentação do seu kit** para descobrir **quais pinos físicos** do FPGA correspondem a cada recurso.
-
-### 3.2 Onde descobrir os pinos?
-- Procure a planilha/arquivo de pinos do kit (ex.: `.xls`):  
-  ![Planilha de pinos](../Aulas/Imagens/1aula13.png)
-- Ela relaciona **recurso da placa** ↔ **pino físico da FPGA** (ex.: `PIN_AB12`).  
-- Em algumas placas, os sinais já vêm **impressos na PCB** ao lado dos conectores/LEDs.
-
-### 3.3 Atribuições no **Pin Planner**
-1. **Quartus** → `Assignments > Pin Planner`  
-   ![Pin Planner](../Aulas/Imagens/2aula13.png)
-2. Na aba de pinos, localize as portas do seu **top‑level** (`a`, `b`, `cin`, `s`, `cout`) e **atribua**:
-   - **Location**: o **pino físico** (ex.: `PIN_<...>`) segundo a planilha.
-   - **I/O Standard**: normalmente **`3.3‑V LVTTL`** para chaves/LEDs on‑board (confirme no manual!).
-   - (Opcional) **Weak Pull‑Up** nas **entradas** (se necessário).
-   ![Atribuições](../Aulas/Imagens/3aula13.png)
-3. **Salvar**. As atribuições ficam no arquivo do projeto **`.qsf`**.
-
-> 💡 **Dica prática:** se os **LEDs são ativo‑baixo**, você verá lógica **invertida** (LED acende com `0`). Ajuste no **hardware** (resistor/transistor já fixos) ou inverta no **Verilog** (`assign led = ~s;`).
-
-### 3.4 Recompilar
-- `Processing > Start Compilation` (ou botão **▶ Compile**). Aguarde terminar sem erros.
+3. **Salve** as alterações (o Quartus grava no `.qsf`) e **recompile**: `Processing > Start Compilation` (ou **▶ Compile**).
 
 ---
 
-## 4) Programando a FPGA (JTAG)
+### 8.2 Programando via **JTAG** (USB-Blaster)
 
-1. **Abrir o Programmer**: `Tools > Programmer`  
-   ![Programmer](../Aulas/Imagens/4aula13.png)
-2. **Hardware Setup...** → selecione **USB‑Blaster**.  
-   - Se **não aparecer**: driver do USB‑Blaster não instalado/cabo desconectado.  
-   ![USB‑Blaster](../Aulas/Imagens/5aula13.png)
-3. **Mode**: **JTAG**.  
-4. **Add File...** → selecione o **`.sof`** recém‑compilado.  
-5. Marque **Program/Configure** e clique **Start**.  
-   ![Progresso](../Aulas/Imagens/6aula13.png)
-6. Aguarde **100%**. Deve aparecer **“Successful”**.  
-   ![Concluído](../Aulas/Imagens/7aula13.png)
+1. Conecte e **alimente** a placa. Conecte o **USB-Blaster** no conector **JTAG** (atenção ao pino 1).  
+2. No Quartus: `Tools > Programmer`.  
+   - **Hardware Setup...** → escolha **USB-Blaster** (se não aparecer, instale o driver/cheque a conexão).  
+     `![Programmer](../Aulas/Imagens/4aula13.png)`  
+     `![USB-Blaster](../Aulas/Imagens/5aula13.png)`
+   - **Mode**: **JTAG**.  
+   - **Add File...** → selecione o `.sof` recém-compilado.  
+   - Marque **Program/Configure** → **Start**.  
+     `![Progresso](../Aulas/Imagens/6aula13.png)`  
+     `![Concluído](../Aulas/Imagens/7aula13.png)`
 
-> ✅ Agora teste: altere as **chaves** (`a`, `b`, `cin`) e observe os **LEDs** (`s`, `cout`). Se a lógica parecer invertida, verifique **ativo‑baixo** e pinos/IO‑standard.
-
----
-
-## 5) (Opcional) Gravação não volátil
-
-- Para que o projeto **permaneça** após desligar:
-  1. `File > Convert Programming Files...` → gerar **`.pof`** (modo **Active Serial**/EPCS).  
-  2. `Tools > Programmer` → **Mode: Active Serial** → programar a **memória de configuração** do kit.
-- Nem todos os kits têm memória AS — confirme na documentação.
+> ✅ Ao chegar em **100%** com “Successful”, o projeto estará carregado na **SRAM** da FPGA (volátil).
 
 ---
 
-## 6) Resumo de **boas práticas** e **pitfalls**
+### 8.3 Validação em bancada
 
-- **Alimentação** primeiro; verifique **chave ON** na placa.  
-- **USB‑Blaster** correto no **Hardware Setup**; cabo firme no conector **JTAG** (pino 1).  
-- **IO Standard** compatível (**3.3‑V LVTTL** é o mais comum).  
-- **Recompile** após qualquer alteração de pinos (`.qsf`).  
-- **Entradas flutuando?** Ative **pull‑up** interno ou use resistores externos conforme o esquema do kit.  
-- **LED não acende**: checar se é **ativo‑baixo** e se o pino mapeado está correto.  
-- **Erro JTAG**: conferir driver, cabo, alimentação, seleção de dispositivo na cadeia (**Auto Detect** pode ajudar).
+1. Percorra manualmente as **8 combinações** de `(a, b, cin)` nas chaves (000 → 111).  
+2. Observe os LEDs e compare com as expressões:
+   - `s = a ^ b ^ cin`  
+   - `cout = (a & b) | (cin & (a ^ b))`
 
----
+**Tabela-verdade de conferência:**
 
-## 7) Apêndice — Exemplo de entradas/saídas e mapeamento (placeholders)
+| a | b | cin | s | cout |
+|---|---|-----|---|------|
+| 0 | 0 |  0  | 0 |  0   |
+| 0 | 0 |  1  | 1 |  0   |
+| 0 | 1 |  0  | 1 |  0   |
+| 0 | 1 |  1  | 0 |  1   |
+| 1 | 0 |  0  | 1 |  0   |
+| 1 | 0 |  1  | 0 |  1   |
+| 1 | 1 |  0  | 0 |  1   |
+| 1 | 1 |  1  | 1 |  1   |
 
-> Preencha os pinos reais a partir da planilha do seu kit.
-
-| Sinal (top-level) | Recurso na placa | Pino FPGA (ex.) | IO Standard        | Observação                  |
-|---|---|---|---|---|
-| `a`   | Chave 1      | `PIN_<SW1>`   | 3.3‑V LVTTL      | Pode precisar pull‑up |
-| `b`   | Chave 2      | `PIN_<SW2>`   | 3.3‑V LVTTL      |                       |
-| `cin` | Chave 3      | `PIN_<SW3>`   | 3.3‑V LVTTL      |                       |
-| `s`   | LED D12      | `PIN_<LED12>` | 3.3‑V LVTTL      | LED possivelmente ativo‑baixo |
-| `cout`| LED D6       | `PIN_<LED6>`  | 3.3‑V LVTTL      | LED possivelmente ativo‑baixo |
-
-
-## 8) Referências rápidas
-
-- **Pin Planner**: `Assignments > Pin Planner`  
-- **Compilação**: `Processing > Start Compilation`  
-- **Programmer (JTAG)**: `Tools > Programmer` → **USB‑Blaster** → **Add File (.sof)** → **Start**
+> Se o LED aparentar “inverso”, lembre do **ativo-baixo** (ou inverta no HDL).
 
 ---
 
-> **Nota final:** Consulte sempre o **esquema elétrico** da placa para entender **níveis lógicos**, **pull‑ups/pull‑downs** e **inversões** (LEDs, botões, chaves). Isso explica por que alguns sinais “ligam” quando você escreve `0` (ativo‑baixo) e evita diagnósticos errados.
+### 8.4 Trecho **`.qsf`** (preencha com os seus pinos reais)
+
+```tcl
+# Substitua PIN_<...> pelos pinos da planilha do seu kit
+set_location_assignment PIN_<SW1>   -to a
+set_location_assignment PIN_<SW2>   -to b
+set_location_assignment PIN_<SW3>   -to cin
+set_location_assignment PIN_<LED12> -to s
+set_location_assignment PIN_<LED6>  -to cout
+
+# IO Standard típico (confirme no manual do kit)
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to a
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to b
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to cin
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to s
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to cout
+```
+
+---
+
+### 8.5 Debug rápido (quando “não funciona”)
+
+- **Sem alimentação / chave OFF** → nada programa via JTAG.  
+- **USB-Blaster não aparece** → driver/cabo/porta. Tente **Hardware Setup** novamente.  
+- **Erro de pino** → revise o **Pin Planner** e a planilha do kit.  
+- **LED não reage** → verifique **ativo-baixo** ou **IO Standard**.  
+- **Porta errada no top-level** → confirme nomes `a`, `b`, `cin`, `s`, `cout` exatamente como no HDL.
+
+---
+
+### 8.6 (Opcional) Gravação **não volátil**
+
+Se o kit possuir memória de configuração **AS** (ex.: EPCS):  
+1. `File > Convert Programming Files...` → gere `.pof` (Active Serial).  
+2. `Tools > Programmer` → **Mode: Active Serial** → selecione a memória e **Start**.  
+> Assim o projeto carrega **após desligar/ligar** a placa.
+
+---
+
+## 9) Encerramento (Projeto 01)
+
+- ✅ **Projeto descrito, simulado e validado na FPGA**.  
+- Próximos passos sugeridos:
+  - Criar um **testbench** automatizado para o somador completo.  
+  - Estender para **somador N-bits** com *generate* (ripple-carry).  
+  - Inserir **debounce** nas chaves (se notar ruído ao acionar).
 

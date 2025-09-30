@@ -151,7 +151,7 @@ endmodule
 
 1. **Descubra os pinos físicos** da sua placa (planilha `.xls`/manual do kit).  
    *Exemplo ilustrativo:*  
-   `![Planilha de pinos](../Aulas/Imagens/1aula13.png)`
+   ![Planilha de pinos](../Aulas/Imagens/1aula13.png)
 
 2. No **Quartus**: `Assignments > Pin Planner`.  
    - Localize as portas do **top-level** (`a`, `b`, `cin`, `s`, `cout`).  

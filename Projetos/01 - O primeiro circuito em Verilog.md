@@ -61,10 +61,10 @@ Exemplo ilustrativo:
 // Entradas:  a, b, cin
 // Saídas:    s, cout
 // ---------------------------------------------------------
-module projeto01 (
+module projeto01 (a, b, cin, s, cout);
    input a, b, cin;
    output s, cout;
-);
+
 
     // Fios intermediários (1 bit)
     wire w1, w2, w3;

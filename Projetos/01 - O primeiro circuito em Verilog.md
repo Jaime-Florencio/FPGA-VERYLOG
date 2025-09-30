@@ -62,17 +62,12 @@ Exemplo ilustrativo:
 // Saídas:    s, cout
 // ---------------------------------------------------------
 module projeto01 (
-    input  wire a,
-    input  wire b,
-    input  wire cin,
-    output wire s,
-    output wire cout
+   input a, b, cin;
+   output s, cout;
 );
 
     // Fios intermediários (1 bit)
-    wire w1; // a ^ b
-    wire w2; // cin & (a ^ b)
-    wire w3; // a & b
+    wire w1, w2, w3;
 
     // Abordagem estrutural com primitivas do Verilog
     xor u0 (w1,   a,   b);

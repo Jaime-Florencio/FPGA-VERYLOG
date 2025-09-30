@@ -157,8 +157,8 @@ endmodule
    - Localize as portas do **top-level** (`a`, `b`, `cin`, `s`, `cout`).  
    - Preencha **Location** com os **pinos físicos** correspondentes (ex.: `PIN_AB12`).  
    - Defina **I/O Standard** apropriado (geralmente `3.3-V LVTTL` em kits de Cyclone IV).  
-   `![Pin Planner](../Aulas/Imagens/2aula13.png)`  
-   `![Atribuições](../Aulas/Imagens/3aula13.png)`
+   ![Pin Planner](../Aulas/Imagens/2aula13.png)  
+   ![Atribuições](../Aulas/Imagens/3aula13.png)
 
 **Mapa desejado (exemplo da aula):**
 - **Chave 1** → `a`  
@@ -180,13 +180,13 @@ endmodule
 1. Conecte e **alimente** a placa. Conecte o **USB-Blaster** no conector **JTAG** (atenção ao pino 1).  
 2. No Quartus: `Tools > Programmer`.  
    - **Hardware Setup...** → escolha **USB-Blaster** (se não aparecer, instale o driver/cheque a conexão).  
-     `![Programmer](../Aulas/Imagens/4aula13.png)`  
-     `![USB-Blaster](../Aulas/Imagens/5aula13.png)`
+     ![Programmer](../Aulas/Imagens/4aula13.png)  
+     ![USB-Blaster](../Aulas/Imagens/5aula13.png)
    - **Mode**: **JTAG**.  
    - **Add File...** → selecione o `.sof` recém-compilado.  
    - Marque **Program/Configure** → **Start**.  
-     `![Progresso](../Aulas/Imagens/6aula13.png)`  
-     `![Concluído](../Aulas/Imagens/7aula13.png)`
+     ![Progresso](../Aulas/Imagens/6aula13.png)  
+     ![Concluído](../Aulas/Imagens/7aula13.png)
 
 > ✅ Ao chegar em **100%** com “Successful”, o projeto estará carregado na **SRAM** da FPGA (volátil).
 

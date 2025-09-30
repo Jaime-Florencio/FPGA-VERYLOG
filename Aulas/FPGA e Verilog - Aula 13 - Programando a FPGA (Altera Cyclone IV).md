@@ -1,4 +1,4 @@
-# FPGA e Verilog — **Aula 13: Programando a FPGA (Altera Cyclone IV)**
+# FPGA e Verilog - Aula 13 - Programando a FPGA (Altera Cyclone IV)**
 
 > **Objetivo:** configurar pinos no Quartus, compilar o projeto e programar a FPGA via **USB‑Blaster** usando **JTAG**. Exemplo prático com o **Projeto 01 (Somador Completo)**: entradas em chaves, saídas em LEDs.
 
